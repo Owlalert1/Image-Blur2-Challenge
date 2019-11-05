@@ -6,22 +6,22 @@ class Image
     end
 
     def find_ones
-      coordinates = []
+      ones = []
       @picture.each_with_index do |row, row_index|
         row.each_with_index do |item, column_index|
           if item == 1
-            coordinates << [row_index, column_index]
+            ones << [row_index, column_index]
           end
         end
       end
-      coordinates
+      ones
     end
 
-      def blur_around
-        coordinates = get_coordinates
-          @picture.each_with_index do |row, row_index|
-            row.each_with_index do |item, column_index|
-              coordinates.each do |location_row_index, location_column_index|
+    def blur_around
+      ones = find_ones
+        @picture.each_with_index do |row, row_index|
+          row.each_with_index do |item, column_index|
+            ones.each do |location_row_index, location_column_index|
 
               if row_index == location_row_index && column_index == location_column_index
                 @picture[row_index -1][column_index] = 1 unless row_index == 0
@@ -32,7 +32,8 @@ class Image
             end
           end
         end
-      end
+    end
+    
 
 
     def output_image
