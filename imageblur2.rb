@@ -13,7 +13,7 @@ class Image
 
 
 
-    def find_ones
+    def blur_around
       ones = []
       @picture.each_with_index do |row, row_index|
         row.each_with_index do |item, column_index|
@@ -47,5 +47,5 @@ image = Image.new([
 #output for blur1
 image.output_image
 puts
-image.find_ones 
+image.blur_around 
 #output for blur2
